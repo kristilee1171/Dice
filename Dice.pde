@@ -12,11 +12,17 @@ void draw()
   Die E = new Die(200,170);
   Die F = new Die(370,170);
   A.show();
+  A.roll();
   B.show();
+  B.roll();
   C.show();
+  C.roll();
   D.show();
+  D.roll();
   E.show();
+  E.roll();
   F.show();
+  F.roll();
 }
 void mousePressed()
 {
@@ -28,21 +34,62 @@ class Die //models one single dice cube
   
   Die(int x, int y) //constructor
   {
-    roll();
     myX = x;
     myY = y;
   }
   void roll()
   {
-    //your code here
+    fill(0);
+    if((int)(Math.random()*7) < 1)
+    {
+      ellipse(myX+50,myY+50,20,20);
+    }
+    else if((int)(Math.random()*7) < 2)
+    {
+      ellipse(myX+25,myY+25,20,20);
+      ellipse(myX+75,myY+75,20,20); 
+    }
+    else if((int)(Math.random()*7) < 3)
+    {
+      ellipse(myX+25,myY+25,20,20);
+      ellipse(myX+50,myY+50,20,20);
+      ellipse(myX+75,myY+75,20,20); 
+    }
+    else if((int)(Math.random()*7) < 4)
+    {
+      ellipse(myX+25,myY+25,20,20);
+      ellipse(myX+25,myY+75,20,20); 
+      ellipse(myX+75,myY+25,20,20);
+      ellipse(myX+75,myY+75,20,20); 
+    }
+    else if((int)(Math.random()*7) < 5)
+    {
+      ellipse(myX+25,myY+25,20,20);
+      ellipse(myX+25,myY+75,20,20); 
+      ellipse(myX+50,myY+50,20,20);
+      ellipse(myX+75,myY+25,20,20);
+      ellipse(myX+75,myY+75,20,20);
+    }
+    else
+    {
+      ellipse(myX+25,myY+25,20,20);
+      ellipse(myX+25,myY+50,20,20);
+      ellipse(myX+25,myY+75,20,20); 
+      ellipse(myX+75,myY+25,20,20);
+      ellipse(myX+75,myY+50,20,20);
+      ellipse(myX+75,myY+75,20,20);
+    }
+    noFill();
   }
   void show()
   {
+    fill(255);
     rect(myX,myY,100,100,15);
     rect(myX,myY,100,100,15);
     rect(myX,myY,100,100,15);
     rect(myX,myY,100,100,15);
     rect(myX,myY,100,100,15);
     rect(myX,myY,100,100,15);
+    noFill();
   }
 }
