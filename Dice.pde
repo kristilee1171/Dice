@@ -7,43 +7,17 @@ void setup()
 }
 void draw()
 {
-  Die A = new Die(30,20);
-  Die B = new Die(30,140);
-  Die C = new Die(30,260);
-  Die D = new Die(150,20);
-  Die E = new Die(150,140);
-  Die F = new Die(150,260);
-  Die G = new Die(270,20);
-  Die H = new Die(270,140);
-  Die I = new Die(270,260);
-  Die J = new Die(390,20);
-  Die K = new Die(390,140);
-  Die L = new Die(390,260);
-  A.show();
-  A.roll();
-  B.show();
-  B.roll();
-  C.show();
-  C.roll();
-  D.show();
-  D.roll();
-  E.show();
-  E.roll();
-  F.show();
-  F.roll();
-  G.show();
-  G.roll();
-  H.show();
-  H.roll();
-  I.show();
-  I.roll();
-  J.show();
-  J.roll();
-  K.show();
-  K.roll();
-  L.show();
-  L.roll();
-  text("Total: ",150,430);
+  int num = 0;
+  for(int y=20;y<=260;y+=120)
+  {
+    for(int x=30;x<=390;x+=120)
+    {
+       Die one = new Die(x,y);
+       one.show();
+       one.roll();
+    }
+  }
+  text("Total: " + num ,150,430);
 }
 void mousePressed()
 {
@@ -52,7 +26,7 @@ void mousePressed()
 }
 class Die //models one single dice cube
 {
-  int myX, myY;
+  int myX, myY,numSum;
   Die(int x, int y) //constructor
   {
     myX = x;
@@ -64,17 +38,20 @@ class Die //models one single dice cube
     if((int)(Math.random()*7) < 1)
     {
       ellipse(myX+40,myY+40,15,15);
+      num = 1;
     }
     else if((int)(Math.random()*7) < 2)
     {
       ellipse(myX+25,myY+25,15,15);
       ellipse(myX+55,myY+55,15,15); 
+      num = 2;
     }
     else if((int)(Math.random()*7) < 3)
     {
       ellipse(myX+20,myY+20,15,15);
       ellipse(myX+40,myY+40,15,15);
       ellipse(myX+60,myY+60,15,15); 
+      num = 3;
     }
     else if((int)(Math.random()*7) < 4)
     {
@@ -82,6 +59,7 @@ class Die //models one single dice cube
       ellipse(myX+20,myY+60,15,15); 
       ellipse(myX+60,myY+20,15,15);
       ellipse(myX+60,myY+60,15,15); 
+      num = 4;
     }
     else if((int)(Math.random()*7) < 5)
     {
@@ -90,6 +68,7 @@ class Die //models one single dice cube
       ellipse(myX+40,myY+40,15,15);
       ellipse(myX+60,myY+20,15,15);
       ellipse(myX+60,myY+60,15,15);
+      num = 5;
     }
     else
     {
@@ -99,8 +78,10 @@ class Die //models one single dice cube
       ellipse(myX+60,myY+20,15,15);
       ellipse(myX+60,myY+40,15,15);
       ellipse(myX+60,myY+60,15,15);
+      num = 6;
     }
     noFill();
+    numSum = num;
   }
   void show()
   {
@@ -113,4 +94,5 @@ class Die //models one single dice cube
     rect(myX,myY,80,80,15);
     noFill();
   }
+  
 }
