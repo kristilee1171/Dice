@@ -1,36 +1,39 @@
+Die bob;
 void setup()
 {
   size(500,500);
-  background(255,196,241);
   textSize(32);
   noLoop();
 }
 void draw()
 {
-  int num = 0;
+  background(255,196,241);
+  int sum = 0;
   for(int y=20;y<=260;y+=120)
   {
     for(int x=30;x<=390;x+=120)
     {
-       Die one = new Die(x,y);
-       one.show();
-       one.roll();
+       bob = new Die(x,y);
+       bob.show();
+       bob.roll();
     }
   }
-  text("Total: " + num ,150,430);
+  sum = bob.one+bob.two+bob.three+bob.four+bob.five+bob.six;
+  text("Total: " + sum ,150,430);
 }
 void mousePressed()
 {
-  background(255,196,241);
   redraw();
 }
 class Die //models one single dice cube
 {
-  int myX, myY,numSum;
+  int myX, myY;
+  int num
   Die(int x, int y) //constructor
   {
     myX = x;
     myY = y;
+    num = 0;
   }
   void roll()
   {
@@ -38,20 +41,20 @@ class Die //models one single dice cube
     if((int)(Math.random()*7) < 1)
     {
       ellipse(myX+40,myY+40,15,15);
-      num = 1;
+      num = num + 1;
     }
     else if((int)(Math.random()*7) < 2)
     {
       ellipse(myX+25,myY+25,15,15);
       ellipse(myX+55,myY+55,15,15); 
-      num = 2;
+      num = num + 2;
     }
     else if((int)(Math.random()*7) < 3)
     {
       ellipse(myX+20,myY+20,15,15);
       ellipse(myX+40,myY+40,15,15);
       ellipse(myX+60,myY+60,15,15); 
-      num = 3;
+      num = num + 3;
     }
     else if((int)(Math.random()*7) < 4)
     {
@@ -59,7 +62,7 @@ class Die //models one single dice cube
       ellipse(myX+20,myY+60,15,15); 
       ellipse(myX+60,myY+20,15,15);
       ellipse(myX+60,myY+60,15,15); 
-      num = 4;
+      num = num + 4;
     }
     else if((int)(Math.random()*7) < 5)
     {
@@ -68,7 +71,7 @@ class Die //models one single dice cube
       ellipse(myX+40,myY+40,15,15);
       ellipse(myX+60,myY+20,15,15);
       ellipse(myX+60,myY+60,15,15);
-      num = 5;
+      num = num + 5;
     }
     else
     {
@@ -78,21 +81,14 @@ class Die //models one single dice cube
       ellipse(myX+60,myY+20,15,15);
       ellipse(myX+60,myY+40,15,15);
       ellipse(myX+60,myY+60,15,15);
-      num = 6;
+      num = num + 6;
     }
     noFill();
-    numSum = num;
   }
   void show()
   {
     fill(255);
     rect(myX,myY,80,80,15);
-    rect(myX,myY,80,80,15);
-    rect(myX,myY,80,80,15);
-    rect(myX,myY,80,80,15);
-    rect(myX,myY,80,80,15);
-    rect(myX,myY,80,80,15);
     noFill();
   }
-  
 }
