@@ -52,7 +52,7 @@ void draw()
   summ = (E.one+E.two+E.three+E.four+E.five+E.six)+(F.one+F.two+F.three+F.four+F.five+F.six)+(G.one+G.two+G.three+G.four+G.five+G.six)+(H.one+H.two+H.three+H.four+H.five+H.six);
   summm = (I.one+I.two+I.three+I.four+I.five+I.six)+(J.one+J.two+J.three+J.four+J.five+J.six)+(K.one+K.two+K.three+K.four+K.five+K.six)+(L.one+L.two+L.three+L.four+L.five+L.six);
   total = sum+summ+summm;
-  text("Total: " + total ,150,430);
+  text("Total: " + total ,180,430);
 }
 void mousePressed()
 {
